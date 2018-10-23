@@ -12,31 +12,41 @@ window.onload = function () {
 
     let start = document.getElementById("start");
     start.addEventListener("click", reset); //game restarts on click of S
+
+    let maze = document.getElementById("maze");
+    maze.addEventListener("mouseleave", loseA);
 }
 
+let gameOn = false;
 let touch = false; //keeps track of wall touches during game
 let status = document.getElementById("status");
 
 function loseF () { //loss as a result of touching the first wall
-    let wall1 = document.getElementById("boundary1");
-    wall1.classList.add("youlose");
-    touch = true;
-    document.getElementById("status").innerHTML = "You lose!";
+    if (gameOn === true) {
+        let wall1 = document.getElementById("boundary1");
+        wall1.classList.add("youlose");
+        touch = true;
+        document.getElementById("status").innerHTML = "You lose!";
+    }
 }
 
 function loseA () { //loss as a result of touching any walls
-    let walls = document.querySelectorAll(".boundary");
-    document.querySelector(".boundary").addEventListener("mouseover", loseA);
-    for (let i = 0; i < walls.length-1; i++) {
-            walls[i].classList.add("youlose");
+    if (gameOn === true) {
+        let walls = document.querySelectorAll(".boundary");
+        document.querySelector(".boundary").addEventListener("mouseover", loseA);
+        for (let i = 0; i < walls.length-1; i++) {
+                walls[i].classList.add("youlose");
+        }
+        touch = true;
+        document.getElementById("status").innerHTML = "You lose!";
     }
-    touch = true;
-    document.getElementById("status").innerHTML = "You lose!";
 }
 
 function win () {
-    if (touch === false) {
-        document.getElementById("status").innerHTML = "You win!";  
+    if (gameOn === true) {
+        if (touch === false) {
+            document.getElementById("status").innerHTML = "You win!";  
+        }
     }
 }
 
@@ -44,8 +54,9 @@ function reset () { //resets game to initial values so user can try again
     let walls = document.querySelectorAll(".boundary");
     document.querySelector(".boundary").addEventListener("mouseover", loseA);
     for (let i = 0; i < walls.length-1; i++) {
-            walls[i].classList.remove("youlose");
+        walls[i].classList.remove("youlose");
     }
     touch = false;
+    gameOn = true;
     document.getElementById("status").innerHTML = 'Move your mouse over the "S" to begin.';
 }
