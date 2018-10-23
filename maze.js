@@ -17,7 +17,7 @@ window.onload = function () {
     maze.addEventListener("mouseleave", loseA);
 }
 
-let gameOn = false;
+let gameOn = false; //checks whether user has clicked 'S' to start the game N.B. nothing happens until this is done.
 let touch = false; //keeps track of wall touches during game
 let status = document.getElementById("status");
 
