@@ -15,6 +15,8 @@ window.onload = function () {
 
     let maze = document.getElementById("maze");
     maze.addEventListener("mouseleave", loseA);
+
+    gameOn = true;
 }
 
 let gameOn = false; //checks whether user has clicked 'S' to start the game N.B. nothing happens until this is done i.e gameOn is true
