@@ -3,7 +3,7 @@ window.onload = function () {
     wall1.addEventListener("mouseover", loseF);
 
     aWall = document.querySelectorAll(".boundary");
-    Array.from(aWall).forEach(function(wall) { //runs loseA once one of the five walls is touched
+    Array.from(aWall).forEach(function(wall) { //runs loseA once any one of the five walls is touched i.e checking if any wall was touched
         wall.addEventListener("mouseover", loseA)
     });
     
@@ -17,7 +17,7 @@ window.onload = function () {
     maze.addEventListener("mouseleave", loseA);
 }
 
-let gameOn = false; //checks whether user has clicked 'S' to start the game N.B. nothing happens until this is done.
+let gameOn = false; //checks whether user has clicked 'S' to start the game N.B. nothing happens until this is done i.e gameOn is true
 let touch = false; //keeps track of wall touches during game
 let status = document.getElementById("status");
 
