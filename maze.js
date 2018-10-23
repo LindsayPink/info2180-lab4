@@ -25,6 +25,8 @@ function loseF () { //loss as a result of touching the first wall
     if (gameOn === true) {
         let wall1 = document.getElementById("boundary1");
         wall1.classList.add("youlose");
+        let examp = document.getElementsByClassName("boundary example");
+        examp[0].style.background = "#ff8888";
         touch = true;
         document.getElementById("status").innerHTML = "You lose!";
     }
@@ -37,6 +39,8 @@ function loseA () { //loss as a result of touching any walls
         for (let i = 0; i < walls.length-1; i++) {
                 walls[i].classList.add("youlose");
         }
+        let examp = document.getElementsByClassName("boundary example");
+        examp[0].style.background = "#ff8888";
         touch = true;
         document.getElementById("status").innerHTML = "You lose!";
     }
@@ -59,4 +63,6 @@ function reset () { //resets game to initial values so user can try again
     touch = false;
     gameOn = true;
     document.getElementById("status").innerHTML = 'Move your mouse over the "S" to begin.';
+    let examp = document.getElementsByClassName("boundary example");
+    examp[0].style.background = "#eeeeee";
 }
