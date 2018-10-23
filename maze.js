@@ -10,7 +10,9 @@ window.onload = function () {
     let end = document.getElementById("end");
     end.addEventListener("mouseover", win);
 }
-let touch = false;
+
+let touch = false; //keeps track of wall touches during game
+
 function loseF () { //loss as a result of touching the first wall
     let wall1 = document.getElementById("boundary1");
     wall1.classList.add("youlose");
