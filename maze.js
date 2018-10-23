@@ -15,11 +15,13 @@ window.onload = function () {
 }
 
 let touch = false; //keeps track of wall touches during game
+let status = document.getElementById("status");
 
 function loseF () { //loss as a result of touching the first wall
     let wall1 = document.getElementById("boundary1");
     wall1.classList.add("youlose");
     touch = true;
+    document.getElementById("status").innerHTML = "You lose!";
 }
 
 function loseA () { //loss as a result of touching any walls
@@ -29,12 +31,12 @@ function loseA () { //loss as a result of touching any walls
             walls[i].classList.add("youlose");
     }
     touch = true;
-    alert("You lose!");
+    document.getElementById("status").innerHTML = "You lose!";
 }
 
 function win () {
     if (touch === false) {
-        alert("You win!");  
+        document.getElementById("status").innerHTML = "You win!";  
     }
 }
 
@@ -44,4 +46,6 @@ function reset () { //resets game to initial values so user can try again
     for (let i = 0; i < walls.length-1; i++) {
             walls[i].classList.remove("youlose");
     }
+    touch = false;
+    document.getElementById("status").innerHTML = 'Move your mouse over the "S" to begin.';
 }
